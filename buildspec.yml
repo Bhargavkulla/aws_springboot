@@ -3,18 +3,14 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Installing latest Maven version...
-      - cd /usr/local
-      - curl -O https://archive.apache.org/dist/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
-      - tar xzf apache-maven-3.8.8-bin.tar.gz
-      - export M2_HOME=/usr/local/apache-maven-3.8.8
-      - export PATH=$M2_HOME/bin:$PATH
-      - mvn -version
+      - echo Installing dependencies...
+      - yum install -y jq maven
+      - echo Logging in to Amazon ECR...
+      - aws --version
       - ACCOUNT_ID=423623849965
       - REGION=us-east-1
       - REPO_NAME=spring
       - IMAGE_TAG=latest
-      - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com
 
   build:
