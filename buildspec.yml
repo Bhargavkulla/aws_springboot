@@ -1,14 +1,11 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      java: corretto17
   pre_build:
     commands:
-      - echo Installing newer Maven...
-      - wget https://downloads.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
-      - tar xzvf apache-maven-3.8.8-bin.tar.gz
-      - export M2_HOME=$PWD/apache-maven-3.8.8
-      - export PATH=$M2_HOME/bin:$PATH
-      - mvn -version
       - echo Installing dependencies...
       - yum install -y jq
       - echo Logging in to Amazon ECR...
