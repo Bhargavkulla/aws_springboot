@@ -6,5 +6,5 @@ Resources:
       Properties:
         TaskDefinition: "arn:aws:ecs:us-east-1:423623849965:task-definition/SpringTask:1"
         LoadBalancerInfo:
-          ContainerName: "SpringTask-service2"
+          ContainerName: "bhargav"
           ContainerPort: 80
